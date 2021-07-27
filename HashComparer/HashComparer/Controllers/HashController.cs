@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HashComparer.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,10 @@ namespace HashComparer.Controllers
     [ApiController]
     public class HashController : ControllerBase
     {
-
+        [HttpPost]
+        public async Task<IActionResult> CompareHash([FromBody] Request request)
+        {
+            return Ok(request);
+        }
     }
 }
