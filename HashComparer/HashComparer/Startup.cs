@@ -1,3 +1,4 @@
+using HashComparer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,7 +26,8 @@ namespace HashComparer
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddLogging();
+            services.AddScoped<IHasher, SHA256Hasher>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

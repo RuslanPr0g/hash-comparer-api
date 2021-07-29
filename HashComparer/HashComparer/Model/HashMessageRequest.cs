@@ -1,6 +1,6 @@
 ﻿namespace HashComparer.Model
 {
-    public class Request
+    public class HashMessageRequest
     {
         public string Message { get; set; }
     }
