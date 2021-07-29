@@ -11,7 +11,6 @@ C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\bin\Debug
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\HashComparer.csprojAssemblyReference.cache
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\HashComparer.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\HashComparer.AssemblyInfoInputs.cache
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\HashComparer.AssemblyInfo.cs
@@ -27,3 +26,4 @@ C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\ref\HashComparer.dll
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\HashComparer.pdb
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\HashComparer.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\HashComparer.csproj.AssemblyReference.cache
