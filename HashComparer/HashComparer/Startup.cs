@@ -1,3 +1,4 @@
+using HashComparer.Model;
 using HashComparer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HashComparer.Shared;
 
 namespace HashComparer
 {
@@ -28,6 +30,8 @@ namespace HashComparer
         {
             services.AddLogging();
             services.AddScoped<IHasher, SHA256Hasher>();
+            services.Configure<HashingConfig>(Configuration.GetSection(GlobalVariables.HashingPath));
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

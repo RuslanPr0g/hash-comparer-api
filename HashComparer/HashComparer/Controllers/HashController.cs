@@ -1,9 +1,9 @@
 ﻿using HashComparer.Model;
 using HashComparer.Services;
-using HashComparer.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using System;
 using System.Linq;
@@ -14,14 +14,13 @@ namespace HashComparer.Controllers
     [ApiController]
     public class HashController : ControllerBase
     {
-        // todo: Change to IOptions
-        private readonly IConfiguration _configuration;
+        private readonly HashingConfig _hashingConfiguration;
         private readonly ILogger _logger;
         private readonly IHasher _hasher;
 
-        public HashController(IConfiguration configuration, IHasher hasher)
+        public HashController(IOptions<HashingConfig> configuration, IHasher hasher)
         {
-            _configuration = configuration;
+            _hashingConfiguration = configuration.Value;
             _hasher = hasher;
         }
 
@@ -30,15 +29,14 @@ namespace HashComparer.Controllers
         {
             IActionResult response;
 
-            var specialKeyFromConfig = _configuration[GlobalVariables.SpecialKeyPath];
-            var keyIdFromConfig = _configuration[GlobalVariables.KeyIdPath];
-
             string resultInHMAC = string.Empty;
             string signatureInHMAC = string.Empty;
 
             try
             {
                 var eventSignatures = string.Empty;
+                var specialKeyFromConfig = _hashingConfiguration.SpecialKey;
+                var keyIdFromConfig = _hashingConfiguration.KeyId;
 
                 if (Request.Headers.TryGetValue("Event-Signature", out StringValues headerValues))
                 {
@@ -69,19 +67,24 @@ namespace HashComparer.Controllers
 
             if (signatureInHMAC == resultInHMAC)
             {
-                response = Ok("Hashes are equal.");
+                response = Ok(new
+                {
+                    signatureInHMAC,
+                    resultInHMAC,
+                    equal = true
+                });
             }
             else
             {
-                response = BadRequest("Hashes are NOT equal.");
+                response = BadRequest(new
+                {
+                    signatureInHMAC,
+                    resultInHMAC,
+                    equal = false
+                });
             }
 
-            //return response;
-            return Ok(new
-            {
-                signatureInHMAC,
-                resultInHMAC
-            });
+            return response;
         }
     }
 }

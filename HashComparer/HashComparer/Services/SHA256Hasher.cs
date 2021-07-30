@@ -32,7 +32,7 @@ namespace HashComparer.Services
             HMACSHA256 hmacsha256 = new(keyEncoded);
             byte[] dataByteArray = Encoding.ASCII.GetBytes(data);
             using MemoryStream dataByteArrayStream = new(dataByteArray);
-
+            
             var bytes = hmacsha256.ComputeHash(dataByteArrayStream);
             var output = bytes
                 .Select(x => x.ToString("x2"))
