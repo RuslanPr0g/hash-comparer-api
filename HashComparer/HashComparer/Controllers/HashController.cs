@@ -48,7 +48,7 @@ namespace HashComparer.Controllers
                     response = BadRequest(@"No signature event provided. Please, provide ""Event-Signature"" header.");
                 }
 
-                // in case if we have two or more signatures provided
+                // in case if we have two or more signatures provided 
                 if (eventSignatures != null)
                 {
                     var eventSignaturesList = eventSignatures.Split(",");
