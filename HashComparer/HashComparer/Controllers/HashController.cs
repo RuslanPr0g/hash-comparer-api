@@ -29,8 +29,8 @@ namespace HashComparer.Controllers
         {
             IActionResult response;
 
-            string resultInHMAC = string.Empty;
-            string signatureInHMAC = string.Empty;
+            var resultInHMAC = string.Empty;
+            var signatureInHMAC = string.Empty;
 
             try
             {
@@ -38,7 +38,7 @@ namespace HashComparer.Controllers
                 var specialKeyFromConfig = _hashingConfiguration.SpecialKey;
                 var keyIdFromConfig = _hashingConfiguration.KeyId;
 
-                if (Request.Headers.TryGetValue("Event-Signature", out StringValues headerValues))
+                if (Request.Headers.TryGetValue("Event-Signature", out var headerValues))
                 {
                     eventSignatures = headerValues.FirstOrDefault();
                 }
@@ -49,15 +49,19 @@ namespace HashComparer.Controllers
                 }
 
                 // in case if we have two or more signatures provided
-                var eventSignaturesList = eventSignatures.Split(",");
+                if (eventSignatures != null)
+                {
+                    var eventSignaturesList = eventSignatures.Split(",");
 
-                // parts of the event signature {keyId}/{hashFunction}/{signature} in an array
-                var lastEventSignatureParts = eventSignaturesList[int.Parse(keyIdFromConfig) - 1].Split("/");
+                    // parts of the event signature {keyId}/{hashFunction}/{signature} in an array
+                    var lastEventSignatureParts = eventSignaturesList[int.Parse(keyIdFromConfig) - 1].Split("/");
 
-                var keyId = lastEventSignatureParts[0];
-                var hashFunction = lastEventSignatureParts[1];
+                    var keyId = lastEventSignatureParts[0];
+                    var hashFunction = lastEventSignatureParts[1];
 
-                signatureInHMAC = lastEventSignatureParts[2];
+                    signatureInHMAC = lastEventSignatureParts[2];
+                }
+
                 resultInHMAC = _hasher.Hash(request.Message, specialKeyFromConfig.ToCharArray());
             }
             catch (Exception e)
