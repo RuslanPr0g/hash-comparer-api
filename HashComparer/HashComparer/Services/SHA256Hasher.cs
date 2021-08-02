@@ -14,11 +14,11 @@ namespace HashComparer.Services
 
         private static string CalculateHMAC(string data, char[] keyCharArray)
         {
-            byte[] keyEncoded = Encoding.ASCII.GetBytes(keyCharArray);
+            var keyEncoded = Encoding.ASCII.GetBytes(keyCharArray);
             HMACSHA256 hmacsha256 = new(keyEncoded);
-            byte[] dataByteArray = Encoding.ASCII.GetBytes(data);
+            var dataByteArray = Encoding.ASCII.GetBytes(data);
             using MemoryStream dataByteArrayStream = new(dataByteArray);
-            string resultInHMAC = hmacsha256.ComputeHash(dataByteArrayStream)
+            var resultInHMAC = hmacsha256.ComputeHash(dataByteArrayStream)
                                     .Aggregate("", (s, e) =>
                                     {
                                         return $"{s}{e:x2}";
@@ -28,9 +28,9 @@ namespace HashComparer.Services
 
         private static string CalculateHMACAnotherVariant(string data, char[] keyCharArray)
         {
-            byte[] keyEncoded = Encoding.ASCII.GetBytes(keyCharArray);
+            var keyEncoded = Encoding.ASCII.GetBytes(keyCharArray);
             HMACSHA256 hmacsha256 = new(keyEncoded);
-            byte[] dataByteArray = Encoding.ASCII.GetBytes(data);
+            var dataByteArray = Encoding.ASCII.GetBytes(data);
             using MemoryStream dataByteArrayStream = new(dataByteArray);
             
             var bytes = hmacsha256.ComputeHash(dataByteArrayStream);
