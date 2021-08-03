@@ -7,6 +7,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using System;
 using System.Linq;
+using System.Text.Json;
 
 namespace HashComparer.Controllers
 {
@@ -62,7 +63,7 @@ namespace HashComparer.Controllers
                     signatureInHMAC = lastEventSignatureParts[2];
                 }
 
-                resultInHMAC = _hasher.Hash(request.Message, specialKeyFromConfig.ToCharArray());
+                resultInHMAC = _hasher.Hash(JsonSerializer.Serialize(request), specialKeyFromConfig.ToCharArray());
             }
             catch (Exception e)
             {
