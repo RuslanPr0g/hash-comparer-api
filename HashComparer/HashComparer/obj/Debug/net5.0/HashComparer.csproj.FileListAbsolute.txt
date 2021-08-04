@@ -27,3 +27,4 @@ C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\HashComparer.pdb
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\HashComparer.genruntimeconfig.cache
 C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\obj\Debug\net5.0\HashComparer.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\hash-compaere\HashComparer\HashComparer\bin\Debug\net5.0\Newtonsoft.Json.dll

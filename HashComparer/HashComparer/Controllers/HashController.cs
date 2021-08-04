@@ -5,9 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
-using System.Text.Json;
 
 namespace HashComparer.Controllers
 {
@@ -63,7 +63,11 @@ namespace HashComparer.Controllers
                     signatureInHMAC = lastEventSignatureParts[2];
                 }
 
-                resultInHMAC = _hasher.Hash(JsonSerializer.Serialize(request), specialKeyFromConfig.ToCharArray());
+                var serializedModel = JsonConvert.SerializeObject(request);
+
+                Console.WriteLine(serializedModel);
+
+                resultInHMAC = _hasher.Hash(serializedModel, specialKeyFromConfig.ToCharArray());
             }
             catch (Exception e)
             {
